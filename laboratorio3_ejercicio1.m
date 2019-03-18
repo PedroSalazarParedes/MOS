@@ -5,6 +5,7 @@ clear all;
 %metodos numericos
 
 %1.1
+figure('Name','alfa = 1');
 ezplot('3*x^3-10*x^2-56*x+50'); %grafica de la funcion
 hold on; 
 
@@ -25,12 +26,17 @@ end
 
 %1.3
 plot(x,f(x),'*b'); 
+hold off;
 
 %1.5 - Todo otra vez pero con alfa = 0.6
+
+figure('Name','alfa = 0.6');
 alfa = 0.6;
 x = 1;
 delta = 1;
 epsilon = 0.001;
+ezplot('3*x^3-10*x^2-56*x+50'); %grafica de la funcion
+hold on;
 while abs(delta)> epsilon
     act = x;
     plot(x,f(x),'or') %1.4 
