@@ -1,1 +1,50 @@
 %Email messaging system with dependency injection pattern
+%Switch the browser to virtual string mode
+declare
+
+class EmailProvider
+
+   feat name
+      
+   attr mails recievers spam
+
+   meth init(Name)
+      self.name = Name
+      mails := {MakeList 1}
+      recievers := {MakeList 1}
+   end
+   meth sendMesssage(Message Recipient)
+      %{Append @mails  [Message]}
+      %{Append @recievers [Recipient]}
+      {Browse "The message: "#Message#" was sent to..."#Recipient#""}
+   end
+end
+
+class Client
+   feat name
+   attr provider
+
+   meth connect(Provider)
+      provider := Provider
+      {Browse "Connected to..."#@provider.name#""}
+   end
+   meth getProvider()
+      {Browse @provider.name}
+   end
+   meth sendMessage(Message Recipient)
+      {@provider sendMessage(Message Recipient)}
+   end
+end
+
+%Time to test injections
+
+Hmail = {New EmailProvider init(hmail)}
+Coldmail = {New EmailProvider init(coldmail)}
+Yuhoo = {New EmailProvider init(yuhoo)}
+
+Persona1 = {New Client connect(Coldmail)}
+{Persona1 getProvider()}
+{Persona1 sendMessage(hola pedrito)}
+
+
+
